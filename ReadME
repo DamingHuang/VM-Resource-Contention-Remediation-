@@ -1,0 +1,47 @@
+ # VM-Resource-Contention-Remediation-
+This project details the Root Cause Analysis (RCA) and manual remediation of severe resource contention on a **Virtual Machine (VM)**. The issue, reported as VM sluggishness, was traced to system-critical services, including **Windows Update (wuauserv)**, **Windows Search**, and the protected **Windows Update Medic Service (WaaSMedicSvc)**.
+
+## Disabling Windows Update Services via Services Manager
+Disabling core update services is a common method to reduce background resource consumption and fix a sluggish **Virtual Machine (VM)** by preventing the system's update mechanism from consuming CPU and disk I/O.
+
+### Step-by-Step Procedure
+
+1. Access **Services Manager**: Press the **Windows Key + R** to open the **Run** dialog, type `services.msc`, and press **Enter**. ![Access Services Manager Screenshot](screenshots/ss1.png)
+
+2. Locate Windows Update Service: In the list of services, find the service named **Windows Update (wuauserv)** ![Windows Update Service Screenshot](screenshots/ss2.png) and **Windows Update Medic Service (WaaSMedicSvc)** ![Windows Update Medic Service Screenshot](screenshots/ss3.png).
+
+3. Stopping the Service (Immediate Halt)
+    - Locate the desired service (e.g., **Windows Update**, or **Windows Update Medic Service**).
+    - **Right-click** on the service.
+    - Look at the menu:
+        - If **Start** is an option, the service is currently stopped. ![Service Start Option Screenshot](screenshots/ss4.png)
+        - If **Stop** is an option, select **Stop** to immediately halt the service's current operations. ![Service Stop Option Screenshot](screenshots/ss5.png)
+
+4. Do the same for **Windows Update Medic Service (WaaSMedicSvc)** ![Windows Update Medic Service Screenshot](screenshots/ss3.png).
+
+---
+
+### Disabling the Service (Permanent Prevention)
+
+This step prevents the service from starting again upon the next boot or system trigger.
+
+1. **Right-click** on the service (**Windows Update (wuauserv)** ![Windows Update Service Screenshot](screenshots/ss2.png) and **Windows Update Medic Service (WaaSMedicSvc)** ![Windows Update Medic Service Screenshot](screenshots/ss3.png)) and select **Properties**.
+
+2. In the **Properties** window, find the **Startup Type** dropdown menu.
+
+3. Change the value to **Disabled**.
+
+4. Click **Apply**, then **OK**. ![Startup Type Disabled Screenshot](screenshots/ss7.png)
+
+5. Please note that the **Windows Update Medic Service (WaaSMedicSvc)** may result in an **"Access Denied"** error.
+
+6. If it does, **run** the following command(s):
+    ```console
+    # Attempt 1 (PowerShell)
+    & sc.exe config WaaSMedicSvc start= disabled
+    
+    # Attempt 2 (CMD via PowerShell)
+    cmd /c "sc config WaaSMedicSvc start= disabled"
+    ```
+
+If the commands result in an **'Access Denied'** error, the next step would be **Registry Modification**.
