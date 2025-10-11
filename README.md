@@ -61,3 +61,27 @@ Access is denied.
 PS C:\Windows\system32>
 ```
 
+## Registry Modification.
+### Step-by-Step Procedure
+
+1. <mark>Win Key + R </mark> =<mark> Run</mark>, input <mark>regedit</mark>
+
+![](https://github.com/DamingHuang/LabScreenShots/blob/fa95df15d15a02f35f9a5b75be43cf9e0825d863/VMscreenshot/ss8.png)
+
+2. Registry Path:
+   
+   <mark>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WaaSMedicSvc</mark>
+
+3. Value Modified: <mark>Start</mark> (DWORD 32-bit).
+![](https://github.com/DamingHuang/LabScreenShots/blob/fa95df15d15a02f35f9a5b75be43cf9e0825d863/VMscreenshot/ss8.1.png)
+
+4. Value Data Set To: <mark>4</mark> (Disabled). 
+
+> The Start value specifies when the service should be started. It can have one of the following values:
+> * 0x0 (Boot): Loaded by the boot loader.
+> * 0x1 (System): Loaded by the I/O subsystem.
+> * 0x2 (Automatic): Loaded automatically by the Service Control Manager during system startup.
+> * 0x3 (Demand): Loaded automatically by PnP if it is needed for a device.
+> * 0x4 (Disabled): The service is disabled and will not be loaded.
+>
+> [HKLM\SYSTEM\CurrentControlSet\Services Registry Tree](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/hklm-system-currentcontrolset-services-registry-tree#start)
