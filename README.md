@@ -5,5 +5,5 @@ This project details the Root Cause Analysis (RCA) and manual remediation of sev
 Disabling core update services is a common method to reduce background resource consumption and fix a sluggish Virtual Machine (VM) by preventing the system's update mechanism from consuming CPU and disk I/O.
 
 ### Step-by-Step Procedure
-1. <mark> Access Services Manager: <mark>   Press the </mark>Windows Key + R<mark> to open the Run dialog, type services.msc, and press Enter.
+1. <mark> Access Services Manager: </mark>   Press the <mark>Windows Key + R</mark> to open the Run dialog, type services.msc, and press Enter.
 2. 
