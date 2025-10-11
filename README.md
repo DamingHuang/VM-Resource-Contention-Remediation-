@@ -6,5 +6,6 @@ Disabling core update services is a common method to reduce background resource 
 
 ### Step-by-Step Procedure
 1. <mark> Access Services Manager: </mark>   Press the <mark>Windows Key + R</mark> to open the Run dialog, type services.msc, and press Enter.
-(VMscreenshot/ss1.png)
+<img width="1164" height="196" alt="image" src="https://github.com/user-attachments/assets/1c545c51-659a-4e06-98e9-54194a7c1a62" />
+
 2. 
