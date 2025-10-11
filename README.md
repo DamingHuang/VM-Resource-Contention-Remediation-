@@ -6,5 +6,8 @@ Disabling core update services is a common method to reduce background resource 
 
 ### Step-by-Step Procedure
 1. <mark> Access Services Manager: </mark>   Press the <mark>Windows Key + R</mark> to open the Run dialog, type services.msc, and press Enter.
-(VMscreenshot/ss1.png)
-2. 
+![Access Services Manager Screenshot](https://github.com/DamingHuang/LabScreenShots/blob/53279bf018269015be718ae96ef6d755fb30bbb7/VMscreenshot/ss1.png)
+
+2. <mark>Locate Windows Update Service:</mark> In the list of services, find the service named <mark>Windows Update (wuauserv)</mark> ![] (https://github.com/DamingHuang/LabScreenShots/blob/53279bf018269015be718ae96ef6d755fb30bbb7/VMscreenshot/ss2.png)& <mark>Windows Update Medic Service (WaaSMedicSvc)![] (https://github.com/DamingHuang/LabScreenShots/blob/53279bf018269015be718ae96ef6d755fb30bbb7/VMscreenshot/ss3.png)</mark> 
+
+3. 
