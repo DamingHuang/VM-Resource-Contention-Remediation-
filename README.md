@@ -89,3 +89,34 @@ PS C:\Windows\system32>
 
 6. System Action: VM was rebooted to apply the change.
 7. If both **Windows Update (wuauserv)** and **Windows Update Medic Service (WaaSMedicSvc)** are disabled, and updates are still running even with the registry disabled, it means **it's more than likely a Task Scheduler issue**.
+
+## Disable Update Tasks in Task Scheduler / Task Scheduler Remediation
+
+Windows uses the Task Scheduler to launch update processes on a schedule, even if the main service is disabled. You should disable these tasks to ensure updates don't run.
+### Step-by-Step Procedure
+
+
+1. Open the **Task Scheduler** (`taskschd.msc`).
+2. Navigate to the following folder in the left pane: **Task Scheduler Library → Microsoft → Windows → UpdateOrchestrator**.
+3. In the center pane, you will see tasks like **UpdateAssistant** and **UpdateModelTask**.
+4. For each task:
+    - Right-click the task (e.g., `UpdateOrchestrator`).
+        - **USO_UxBroker** (also referred to by its service, `UsoSvc`, which runs in the background) coordinates the entire update process: scanning, downloading, installing, and restarting. If its associated task is active, it will bypass disabled settings to try and ensure updates happen.
+        - **Schedule Scan** is the task that triggers the initial check for new updates, which often requires or re-activates the disabled **Windows Update** service (`wuauserv`) to complete the scan.
+    - Select **Disable**. (This will change its status from "Ready" to "Disabled").
+
+But you may run into the following issue 
+“The user account you are operating under does not have permission todisable this task.”
+
+1. Uncheck the Enabled
+   ![](https://github.com/DamingHuang/LabScreenShots/blob/fa95df15d15a02f35f9a5b75be43cf9e0825d863/VMscreenshot/ss.png)
+2. Click Ok
+
+   ![](https://github.com/DamingHuang/LabScreenShots/blob/fa95df15d15a02f35f9a5b75be43cf9e0825d863/VMscreenshot/ss.png)
+3. Click Ok
+
+If entering your administrator password doesn't work, it's often because Microsoft has locked down these **Windows Update tasks**. They are often configured to run with the **highest privileges** (**SYSTEM** account) and can't be modified, disabled, or deleted through the normal Task Scheduler interface.
+
+To get around this and successfully disable the tasks in `UpdateOrchestrator`, the most common advanced workaround is to use a special administrative tool like **PsExec** to open the **Task Scheduler** under the **SYSTEM** account itself, which bypasses the permissions locks.  
+5. 
+   
