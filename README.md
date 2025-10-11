@@ -66,16 +66,17 @@ PS C:\Windows\system32>
 
 1. <mark>Win Key + R </mark> =<mark> Run</mark>, input <mark>regedit</mark>
 
-![](https://github.com/DamingHuang/LabScreenShots/blob/fa95df15d15a02f35f9a5b75be43cf9e0825d863/VMscreenshot/ss8.png)
+![](https://github.com/DamingHuang/LabScreenShots/blob/36f5470d4885bc5828b815c12a0af5e126c056f7/VMscreenshot/ss8.png)
 
 2. Registry Path:
    
    <mark>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WaaSMedicSvc</mark>
 
 3. Value Modified: <mark>Start</mark> (DWORD 32-bit).
-![](https://github.com/DamingHuang/LabScreenShots/blob/fa95df15d15a02f35f9a5b75be43cf9e0825d863/VMscreenshot/ss8.1.png)
+   
+   ![](https://github.com/DamingHuang/LabScreenShots/blob/36f5470d4885bc5828b815c12a0af5e126c056f7/VMscreenshot/ss8.1.png)
 
-4. Value Data Set To: <mark>4</mark> (Disabled). 
+5. Value Data Set To: <mark>4</mark> (Disabled). 
 
 > The Start value specifies when the service should be started. It can have one of the following values:
 > * 0x0 (Boot): Loaded by the boot loader.
@@ -85,3 +86,6 @@ PS C:\Windows\system32>
 > * 0x4 (Disabled): The service is disabled and will not be loaded.
 >
 > [HKLM\SYSTEM\CurrentControlSet\Services Registry Tree](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/hklm-system-currentcontrolset-services-registry-tree#start)
+
+6. System Action: VM was rebooted to apply the change.
+7. If both **Windows Update (wuauserv)** and **Windows Update Medic Service (WaaSMedicSvc)** are disabled, and updates are still running even with the registry disabled, it means **it's more than likely a Task Scheduler issue**.
