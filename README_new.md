@@ -148,10 +148,8 @@ To get around this and successfully disable the tasks in `UpdateOrchestrator`, t
  
  
   cd C:\Users\HDM\Desktop\PSTools
-
-   ![Screenshot of disabled Task Scheduler tasks](screenshots/disabled_tasks.png)
-
- 
+  
+ ![](https://github.com/DamingHuang/LabScreenShots/blob/dbc8fe615aa60e6f0dc284974d8161ef16b2b611/VMscreenshot/ss14.png)
  
  
  
@@ -159,16 +157,44 @@ To get around this and successfully disable the tasks in `UpdateOrchestrator`, t
     - Navigate to: **Task Scheduler Library → Microsoft → Windows → UpdateOrchestrator**.
     - **Right-click** on the following tasks and select **Disable**:
         1. **USO_UxBroker**
-
- ![](https://github.com/DamingHuang/LabScreenShots/blob/740c16c46551140292de002c161217297453236b/VMscreenshot/ss15.png)
-
-        2. **Schedule Scan
-    - A screenshot of the tasks successfully disabled. 
- ![Screenshot of disabled Task Scheduler tasks](screenshots/disabled_tasks.png)
+   
+         ![](https://github.com/DamingHuang/LabScreenShots/blob/dbc8fe615aa60e6f0dc284974d8161ef16b2b611/VMscreenshot/ss15.png)
+ 
+        2.  **Schedule Scan**
+        
+        ![](https://github.com/DamingHuang/LabScreenShots/blob/dbc8fe615aa60e6f0dc284974d8161ef16b2b611/VMscreenshot/ss16.png)
 
 5. **A screenshot of the tasks successfully disabled** is shown below:
-    ![Screenshot of disabled Task Scheduler tasks](screenshots/disabled_tasks.png)
+    ![Screenshot of disabled Task Scheduler tasks](https://github.com/DamingHuang/LabScreenShots/blob/dbc8fe615aa60e6f0dc284974d8161ef16b2b611/VMscreenshot/ss17.png)
 
 6. After the console is exited, a **“C:\Windows\System32\mmc.exe exited on HDM with error code 0.”** alert will show up on the PowerShell.
-    ![Screenshot of disabled Task Scheduler tasks](screenshots/disabled_tasks.png)
+    ![](https://github.com/DamingHuang/LabScreenShots/blob/4805e51136858e59fe25bb37296ce4df4a0b040f/VMscreenshot/ss18.png)
 
+## Managing High CPU Processes (e.g., Search Service)
+
+If other background processes, such as the **Search service** shown in your image, are consuming a high amount of CPU resources, use the following two-step approach to reclaim performance:
+
+### Step 1: Immediate Resource Release
+
+Attempt to terminate the active process to instantly reduce CPU load.
+
+1. In **Task Manager**, **Right-click** on the high-CPU process (e.g., **Search**).
+2. Select **End task**.
+
+    ![](https://github.com/DamingHuang/LabScreenShots/blob/4abe1ce96c2b0d4255c5efc47937b74563b50cdc/VMscreenshot/ss19.png)
+
+### Step 2: Permanent Prevention (If Necessary)
+
+If the process restarts automatically or the issue recurs after a reboot, you must permanently disable the associated service via the Service Management Console.
+
+1. Open the **Services Manager** (**Run** → `services.msc`).
+2. **Locate** the service associated with the process (e.g., **Windows Search**).
+3. **Right-click** the service and select **Properties**.
+4. Change the **Startup type** to **Disabled**.
+5. Click **Stop** (if the service is currently running), then **Apply**, and **OK**.
+6. **Reboot** the Virtual Machine to ensure the service remains disabled.
+
+
+![](https://github.com/DamingHuang/LabScreenShots/blob/5f8c11f4221030a7e4ffc0e564e1607052b55be5/VMscreenshot/ss20.png)
+
+   
