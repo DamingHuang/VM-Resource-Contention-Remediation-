@@ -140,7 +140,7 @@ To get around this and successfully disable the tasks in `UpdateOrchestrator`, t
     cd C:\Users\[User]\Desktop\PSTOOLS
     
     # Execute Task Scheduler under the SYSTEM account
-    psexec.exe -i -s C:\Windows\System32\mmc.exe C:\Windows\System32\taskschd.msc
+    .\psexec.exe -i -s C:\Windows\System32\mmc.exe C:\Windows\System32\taskschd.msc
     ```
     *Replace `[User]` with your User profile name.*
    
