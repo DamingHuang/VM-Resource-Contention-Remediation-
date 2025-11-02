@@ -198,3 +198,7 @@ If the process restarts automatically or the issue recurs after a reboot, you mu
 ![](https://github.com/DamingHuang/LabScreenShots/blob/5f8c11f4221030a7e4ffc0e564e1607052b55be5/VMscreenshot/ss20.png)
 
 Sluggish VM performance can result from multiple factors, including system services, background processes, and scheduled maintenance operations, as discussed in the sections above. This case was a prime example, with high CPU usage traced directly to Windows Update and Search components. The solution involved a multi-layered attack: disabling services, modifying the WaaSMedicSvc registry setting, and forcibly disabling persistent UpdateOrchestrator tasks via PsExec. These actions eliminated the resource contention and fully restored the VM's stability and speed.
+
+**Important Note: ** The VM performance fixes are not a one-time solution. Windows will automatically revert these changes through its self-healing features, causing the original sluggishness to return after a reboot or system scan.
+
+**Permanent Solution:** To sustain performance, you must implement a recurring counter-measure. Create a scheduled task to run the disabling script at frequent intervals (e.g., every 5 minutes). This task will persistently re-apply the fixes, ensuring that the targeted services and tasks remain disabled indefinitely.
